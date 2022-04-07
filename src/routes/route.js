@@ -3,12 +3,12 @@ const logger = require('./logger')
 
 const router = express.Router();
 
-router.get('/user-profile/:abcd', function (req, res) {
-    console.log(req)
-    console.log(req.params.abcd)
-    res.send('dummy response')
-})
-// Problem 1
+// router.get('/user-profile/:abcd', function (req, res) {
+//     console.log(req)
+//     console.log(req.params.abcd)
+//     res.send('dummy response')
+// })
+// // Problem 1
 router.get('/movies', function (req, res) {
     let arrMovies = ["Dune", "Uncharted", "Avengers", "RRR", "Knives Out"];
 
