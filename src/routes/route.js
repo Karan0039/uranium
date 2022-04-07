@@ -8,7 +8,7 @@ const router = express.Router();
 //     console.log(req.params.abcd)
 //     res.send('dummy response')
 // })
-// // Problem 1
+// Problem 1
 router.get('/movies', function (req, res) {
     let arrMovies = ["Dune", "Uncharted", "Avengers", "RRR", "Knives Out"];
 
@@ -20,7 +20,7 @@ router.get('/movies', function (req, res) {
 router.get('/movies/:indexNumber', function (req, res) {
     let arrMovies = ["Dune", "Uncharted", "Avengers", "RRR", "Knives Out"];
 
-    if (req.params.indexNumber >= 0 && req.params.indexNumber <= arrMovies.length)
+    if (req.params.indexNumber >= 0 && req.params.indexNumber < arrMovies.length)
         res.send(arrMovies[req.params.indexNumber]);
     else res.send('use a valid index number');
 });
@@ -62,8 +62,8 @@ router.get('/films/:indexNumber', function (req, res) {
         "id": 4,
         "name": "Finding Nemo"
     }];
-    let objMovie;
-    if (req.params.indexNumber >= 0 && req.params.indexNumber <= arrMovies.length) {
+
+    if (req.params.indexNumber >= 0 && req.params.indexNumber < arrMovies.length) {
         for (let i = 0; i < arrMovies.length; i++) {
             if (arrMovies[i].id == req.params.indexNumber)
             res.send(arrMovies[i]);
