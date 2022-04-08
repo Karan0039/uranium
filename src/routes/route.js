@@ -47,15 +47,5 @@ router.post('/players', function (req, res) {
     res.send(players);
 });
 
-
-
-
-
-    router.post('/post1', function (req, res) {
-        let data=req.body;
-        console.log(data);
-        res.send({msg:"This is my post api"});
-        });
-    
 module.exports = router;
 // adding this comment for no reason
