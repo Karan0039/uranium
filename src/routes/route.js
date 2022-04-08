@@ -38,7 +38,7 @@ router.post('/players', function (req, res) {
     let temp=0;
     for(let i=0;i<players.length;i++){
     if(players[i].name==data.name)
-        return res.send("Error: player is already present, enter new data!!")
+        return res.send({ msg: "Error: player is already present, enter new data!!", Players: players});
     }
     players.push(data);
     res.send(players);
