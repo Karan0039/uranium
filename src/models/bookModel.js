@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema( {
-    bookName: String, 
+    bookName: {
+        type: String,
+        required:true
+    }, 
     prices: {
-        indianPrice: String,
+        indianPrice: String,{
+        type: String,
+        required:true
+    }
         europePrice: String
     },
     year : {
