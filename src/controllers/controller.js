@@ -34,7 +34,7 @@ const findBooks = async function (req, res) {
     let a= await bookModel.find( { price : { $gte: 50, $lte: 100} } ).select({ author_id :1, _id:0})
     for(let i=0;i<a.length;i++){
     let getData=await authorModel.find({author_id:a[i].author_id}).select({author_name:1,_id:0});
-    arr[temp++]= a[i]+ getData ;
+    arr[temp++]= getData ;
     }
     
     res.send({ msg: arr })
