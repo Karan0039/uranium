@@ -44,7 +44,7 @@ const updateBooks = async function (req, res) {
     for (let i = 0; i < authorId.length; i++) {
          updateData1 = await bookModel.updateMany({ author: authorId[i]._id }, { $inc: { price: 10 } })
     }
-    res.send({ msg1: updateData, masg2: updateData1 })
+    res.send({ msg1: updateData, msg2: updateData1 })
 }
  
 module.exports.listAllBooks = listAllBooks;
