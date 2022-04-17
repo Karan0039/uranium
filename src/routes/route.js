@@ -11,4 +11,6 @@ router.post("/createBook", Controller.createBook)
 
 router.get("/listAllBooks", Controller.listAllBooks)
 
+router.put("/updateBooks", Controller.updateBooks)
+
 module.exports = router; 

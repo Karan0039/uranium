@@ -1,13 +1,13 @@
 const bookModel = require("../models/bookModel")
-const authorModel=require("../models/authorModel")
+const authorModel = require("../models/authorModel")
 const publisherModel = require("../models/publisherModel")
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId
 
-const createAuthor=async function(req,res){
-    let data=req.body;
-    let saveData= await authorModel.create(data);
-    res.send({msg:saveData});
+const createAuthor = async function (req, res) {
+    let data = req.body;
+    let saveData = await authorModel.create(data);
+    res.send({ msg: saveData });
 }
 
 const createPublisher = async function (req, res) {
@@ -29,11 +29,26 @@ const createBook = async function (req, res) {
 }
 
 const listAllBooks = async function (req, res) {
-    let getData = await bookModel.find().populate(['author','publisher'])
+    let getData = await bookModel.find().populate(['author', 'publisher'])
     res.send({ msg: getData })
-} 
+}
 
-module.exports.listAllBooks = listAllBooks; 
-module.exports.createAuthor=createAuthor;
+const updateBooks = async function (req, res) {
+    let publisherId = await publisherModel.find({ name: { $in: ["Penguin", "HarperCollins"] } }).select("_id");
+    let updateData 
+    for (let i = 0; i < publisherId.length; i++){
+        updateData= await bookModel.updateMany({publisher:publisherId[i]._id },  {$set: { isHardCover:true } })
+    }
+    let authorId = await authorModel.find({ rating: { $gt: 3.5 } }).select("_id")
+    let updateData1;
+    for (let i = 0; i < authorId.length; i++) {
+         updateData1 = await bookModel.updateMany({ author: authorId[i]._id }, { $inc: { price: 10 } })
+    }
+    res.send({ msg1: updateData, masg2: updateData1 })
+}
+ 
+module.exports.listAllBooks = listAllBooks;
+module.exports.createAuthor = createAuthor;
 module.exports.createBook = createBook;
 module.exports.createPublisher = createPublisher;
+module.exports.updateBooks = updateBooks;
