@@ -3,14 +3,12 @@ const router = express.Router();
 
 const Controller = require("../controllers/Controller")
 
-router.post("/createAuthor", Controller.createAuthor)
+router.post("/batches", Controller.createbatch)
 
-router.post("/createPublisher", Controller.createPublisher)
+router.post("/developers", Controller.createDeveloper)
 
-router.post("/createBook", Controller.createBook)
+router.get("/scholarship-Developers", Controller.scholarshipDevelopers)
 
-router.get("/listAllBooks", Controller.listAllBooks)
-
-router.put("/updateBooks", Controller.updateBooks)
+router.get("/developers", Controller.getDevelopers)
 
 module.exports = router; 
