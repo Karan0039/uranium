@@ -8,11 +8,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://FunctionUp:heeheehee123@cluster0.ambyf.mongodb.net/karan_populate-refrence", {
-    useNewUrlParser: true
-})
-.then( () => console.log("MongoDb is connected"))
-.catch ( err => console.log(err) )
+// mongoose.connect("mongodb+srv://FunctionUp:heeheehee123@cluster0.ambyf.mongodb.net/karan_populate-refrence", {
+//     useNewUrlParser: true
+// })
+// .then( () => console.log("MongoDb is connected"))
+// .catch ( err => console.log(err) )
 
 app.use('/', route);
 
